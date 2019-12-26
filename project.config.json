@@ -1,43 +1,16 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
+	"description": "A WePY project",
 	"setting": {
 		"urlCheck": true,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"autoAudits": false,
-		"coverView": true
+		"es6": false,
+		"postcss": false,
+		"minified": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.4",
 	"appid": "wx8cdcbb7c251652cb",
-	"projectname": "bbs-weapp",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
+	"projectname": "larabbs-weapp",
+	"miniprogramRoot": "dist/",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": []
-		}
-	}
+	"condition": {}
 }
