@@ -21,6 +21,7 @@
 
 <script>
   import wepy from 'wepy'
+  // import api from '../pages/utils/api.js'
 
   export default class Index extends wepy.page {
 
@@ -43,5 +44,26 @@
         body: 'larabbs 测试内容4'
       }]
     }
+    // // 页面打开事件
+    // async onShow() {
+    //   try {
+    //     // 打开页面自动调用第一次登录
+    //     let authResponse = await api.login()
+    //     // 登录成功返回上一个页面
+    //     if (authResponse.statusCode === 201) {
+    //       wepy.navigateBack()
+    //     }
+    //     if (authResponse.statusCode === 403) {
+    //       wepy.redirectTo({
+    //         url: 'auth/login'
+    //       })
+    //     }
+    //   } catch (err) {
+    //     wepy.showModal({
+    //       title: '提示',
+    //       content: '服务器错误，请联系管理员'
+    //     })
+    //   }
+    // }
   }
 </script>
