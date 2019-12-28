@@ -1,5 +1,5 @@
 Arguments: 
-  F:\node\node.exe F:\node\node_modules\yarn\bin\yarn.js add promise-polyfill
+  F:\node\node.exe F:\node\node_modules\yarn\bin\yarn.js add moment --no-bin-links
 
 PATH: 
   F:\xmanager\xshell\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;F:\curl\bin;F:\go\bin;F:\go-combat\bin;C:\composer;F:\tortoise\bin;C:\WINDOWS\System32\OpenSSH\;F:\mysql-5.7.28\bin;F:\php-7.2.24;F:\node\;F:\gits\Git\cmd;F:\redis\;C:\Users\demon\AppData\Local\Yarn\bin;C:\Users\demon\AppData\Roaming\Composer\vendor\bin;F:\pycharm\PyCharm Community Edition 2019.2.3\bin;C:\Users\demon\AppData\Local\Microsoft\WindowsApps;C:\Users\demon\AppData\Roaming\npm;C:\Users\demon\AppData\Local\BypassRuntm
@@ -36,13 +36,14 @@ npm manifest:
     "author": "xiaoxiao <jixiaoxiao0301@163.com>",
     "license": "MIT",
     "dependencies": {
+      "promise-polyfill": "^8.1.3",
       "redux": "^3.7.2",
       "redux-actions": "^2.2.1",
       "redux-promise": "^0.5.3",
-      "wepy-redux": "^1.5.3",
       "wepy": "^1.6.0",
-      "wepy-async-function": "^1.4.4",
-      "wepy-com-toast": "^1.0.2"
+      "wepy-async-function": "^1.4.7",
+      "wepy-com-toast": "^1.0.2",
+      "wepy-redux": "^1.5.3"
     },
     "devDependencies": {
       "babel-eslint": "^7.2.1",
@@ -1201,6 +1202,11 @@ Lockfile:
     resolved "https://registry.npm.taobao.org/promise-polyfill/download/promise-polyfill-6.1.0.tgz#dfa96943ea9c121fca4de9b5868cb39d3472e057"
     integrity sha1-36lpQ+qcEh/KTem1hoyznTRy4Fc=
   
+  promise-polyfill@^8.1.3:
+    version "8.1.3"
+    resolved "https://registry.npm.taobao.org/promise-polyfill/download/promise-polyfill-8.1.3.tgz#8c99b3cf53f3a91c68226ffde7bde81d7f904116"
+    integrity sha1-jJmzz1PzqRxoIm/9573oHX+QQRY=
+  
   promise@^7.1.1:
     version "7.3.1"
     resolved "https://registry.npm.taobao.org/promise/download/promise-7.3.1.tgz#064b72602b18f90f29192b8b1bc418ffd1ebd3bf"
@@ -1500,7 +1506,7 @@ Lockfile:
       core-util-is "1.0.2"
       extsprintf "^1.2.0"
   
-  wepy-async-function@^1.4.4:
+  wepy-async-function@^1.4.7:
     version "1.4.7"
     resolved "https://registry.npm.taobao.org/wepy-async-function/download/wepy-async-function-1.4.7.tgz#f783164306e175d9a7c2656a33532e619c8eae16"
     integrity sha1-94MWQwbhddmnwmVqM1MuYZyOrhY=
