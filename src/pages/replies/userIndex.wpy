@@ -18,15 +18,13 @@
                 <image class="replyer-avatar weui-media-box__thumb" src="{{ reply.user.avatar }}" />
               </navigator>
 
-              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <navigator class="weui-media-box__bd weui-media-box__bd_in-appmsg" url="/pages/topics/show?id={{ reply.topic_id }}">
                 <view class="weui-media-box__title">{{ reply.user.name }}</view>
                 <view class="weui-media-box__desc"><rich-text nodes="{{ reply.content }}" bindtap="tap"></rich-text></view>
                 <view class="weui-media-box__info">
                   <view class="weui-media-box__info__meta">{{ reply.created_at_diff }}</view>
                 </view>
-              </view>
-
-              <image wx:if="{{ reply.can_delete }}" class="reply-delete" src="/images/trash.png" @tap="deleteReply({{ reply.topic_id }}, {{ reply.id }})"/>
+              </navigator>
             </view>
           </repeat>
           <view class="weui-loadmore weui-loadmore_line" wx:if="{{ noMoreData }}">
@@ -34,11 +32,6 @@
           </view>
         </view>
       </view>
-
-      <!-- 回复链接 -->
-      <navigator url="/pages/replies/create?topic_id={{ topicId }}">
-        <image src="/images/reply.png" class="create-reply" />
-      </navigator>
     </view>
   </view>
 </template>
@@ -46,20 +39,19 @@
   import wepy from 'wepy'
   import replyMixin from '@/mixins/reply'
 
-  export default class replyIndex extends wepy.page {
+  export default class replyUserIndex extends wepy.page {
     config = {
-      // 下拉刷新
       enablePullDownRefresh: true,
-      navigationBarTitleText: '回复列表'
-    }
-    data = {
-      requestData: {}
+      navigationBarTitleText: '用户回复列表'
     }
     mixins = [replyMixin]
-
+    data = {
+      requestData: {},
+      include: 'user,topic'
+    }
     async onLoad(options) {
-      // 获取 URL 参数中的 话题id
-      this.requestData.url = 'topics/' + options.topic_id + '/replies'
+      this.requestData.url = 'users/' + options.user_id + '/replies'
+      this.requestData.include = 'user,topic'
       this.getReplies()
     }
   }
