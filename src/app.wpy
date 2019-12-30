@@ -48,7 +48,8 @@ export default class extends wepy.app {
       'pages/auth/login',
       'pages/auth/register',
       'pages/replies/index',
-      'pages/replies/userIndex'
+      'pages/replies/userIndex',
+      'pages/replies/create'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -77,7 +78,8 @@ export default class extends wepy.app {
   }
 
   globalData = {
-    refreshPages: []
+    refreshPages: [],
+    unreadCount: 0
   }
 
   checkRefreshPages(route, callback) {
@@ -132,6 +134,9 @@ export default class extends wepy.app {
   }
 
   onLaunch() {
+
   }
+
+
 }
 </script>

@@ -86,7 +86,6 @@
     config = {
       enablePullDownRefresh: true
     }
-
     data = {
       // 话题数据
       topics: [],
