@@ -17,6 +17,49 @@ export default class ReplyMixin extends wepy.mixin {
     page: 1,
     // 话题id
   }
+  methods = {
+    // 删除回复
+    async deleteReply(topicId, replyId) {
+      // 确认是否删除
+      let res = await wepy.showModal({
+        title: '确认删除',
+        content: '您确认删除该回复吗',
+        confirmText: '删除',
+        cancelText: '取消'
+      })
+
+      // 点击取消后返回
+      if (!res.confirm) {
+        return
+      }
+
+      try {
+        // 调用接口删除回复
+        let deleteResponse = await api.authRequest({
+          url: 'topics/' + topicId + '/replies/' + replyId,
+          method: 'DELETE'
+        })
+        // 删除成功
+        if (deleteResponse.statusCode === 204) {
+          wepy.showToast({
+            title: '删除成功',
+            icon: 'success',
+            duration: 2000
+          })
+          // 将删除了的回复移除
+          this.replies = this.replies.filter((reply) => reply.id !== replyId)
+          this.$apply()
+        }
+        return deleteResponse
+      } catch (err) {
+        console.log(err)
+        wepy.showModal({
+          title: '提示',
+          content: '服务器错误，请联系管理员'
+        })
+      }
+    }
+  }
   // 获取回复话题
   async getReplies(reset = false) {
     try {
@@ -30,7 +73,12 @@ export default class ReplyMixin extends wepy.mixin {
 
       if (repliesResponse.statusCode === 200) {
         let replies = repliesResponse.data.data
-        replies.forEach(function (reply) {
+
+        // 获取当前用户
+        let user = await this.$parent.getCurrentUser()
+        replies.forEach((reply) => {
+          // 控制是否可以删除
+          reply.can_delete = this.canDelete(user, reply)
           reply.created_at_diff = util.diffForHumans(reply.created_at)
         })
 
@@ -45,11 +93,20 @@ export default class ReplyMixin extends wepy.mixin {
 
       return repliesResponse
     } catch (err) {
+      console.log(err)
       wepy.showModal({
         title: '提示',
         content: '服务器错误，请联系管理员'
       })
     }
+  }
+
+  canDelete(user, reply) {
+    if (!user) {
+      return false
+    }
+
+    return (reply.user_id === user.id)
   }
 
   async onPullDownRefresh() {

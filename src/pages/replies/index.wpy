@@ -13,6 +13,10 @@
     bottom: 30px;
     right: 30px;
   }
+  .reply-delete {
+    width: 20px;
+    height: 20px;
+  }
 </style>
 <template>
   <view class="page">
