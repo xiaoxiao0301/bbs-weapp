@@ -10,7 +10,10 @@ export default class UnreadCount extends wepy.mixin {
 
   // 页面显示
   onShow () {
-    this.updateUnreadCount()
+    // 延迟调用,首页刚开始无法加载个数
+    setTimeout(() => {
+      this.updateUnreadCount()
+    }, 500)
     this.interval = setInterval(() => {
       this.updateUnreadCount()
     }, 30000)
