@@ -205,5 +205,22 @@
         this.getTopic(this.topic.id)
       })
     }
+
+    onShareAppMessage (res) {
+      return {
+        // 分享标题
+        title: this.topic.title,
+        // 分享话题路径
+        path: '/pages/topics/show?id=' + this.topic.id,
+        success: function (res) {
+          // 转发成功
+          console.log(res)
+        },
+        fail: function (res) {
+          // 转发失败
+          console.log(res)
+        }
+      }
+    }
   }
 </script>
